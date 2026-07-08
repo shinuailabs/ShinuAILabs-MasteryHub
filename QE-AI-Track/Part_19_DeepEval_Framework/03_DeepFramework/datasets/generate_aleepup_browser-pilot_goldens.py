@@ -1,12 +1,12 @@
-"""Auto-bootstrap goldens by chatting with the live BrowserBash bot.
+"""Auto-bootstrap goldens by chatting with the live BrowserPilot bot.
 
 Run this to (re)capture the bot's *current* answers for every golden input and
-write them to ``datasets/aleepup_browserbash_snapshot.json``. Use the snapshot to
+write them to ``datasets/aleepup_browser-pilot_snapshot.json``. Use the snapshot to
 refresh the canonical ``expected_output`` / ``context`` in
-:mod:`datasets.aleepup_browserbash_goldens` whenever the bot's knowledge changes.
+:mod:`datasets.aleepup_browser-pilot_goldens` whenever the bot's knowledge changes.
 
-    python -m datasets.generate_aleepup_browserbash_goldens                 # all golden inputs
-    python -m datasets.generate_aleepup_browserbash_goldens "Custom Q?"     # ad-hoc questions
+    python -m datasets.generate_aleepup_browser-pilot_goldens                 # all golden inputs
+    python -m datasets.generate_aleepup_browser-pilot_goldens "Custom Q?"     # ad-hoc questions
 
 This is a *generation* tool, not a test — it makes live calls to the bot only
 (no judge / OpenAI calls), so it's cheap to run.
@@ -22,14 +22,14 @@ from dotenv import load_dotenv
 ROOT = Path(__file__).resolve().parent.parent
 load_dotenv(ROOT / ".env")
 
-from datasets.aleepup_browserbash_goldens import BROWSERBASH_GOLDENS
-from targets import BrowserBashClient
+from datasets.aleepup_browser-pilot_goldens import BROWSERBASH_GOLDENS
+from targets import BrowserPilotClient
 
-SNAPSHOT = Path(__file__).resolve().parent / "aleepup_browserbash_snapshot.json"
+SNAPSHOT = Path(__file__).resolve().parent / "aleepup_browser-pilot_snapshot.json"
 
 
 def main(argv: list[str]) -> int:
-    bot = BrowserBashClient()
+    bot = BrowserPilotClient()
     if not bot.is_alive():
         print("Bot unreachable — aborting.", file=sys.stderr)
         return 1

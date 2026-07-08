@@ -1,6 +1,6 @@
-"""HTTP client for the live BrowserBash chatbot on the aleepup.com platform.
+"""HTTP client for the live BrowserPilot chatbot on the aleepup.com platform.
 
-This is the *live* target for the ``aleepup-browserbash-chatbot`` suite. Unlike
+This is the *live* target for the ``aleepup-browser-pilot-chatbot`` suite. Unlike
 the local FastAPI chatbot (``targets/chatbot.py``) it:
 
 * takes ``{"message": ..., "visitorId": ...}`` (no ``history`` field), and
@@ -24,14 +24,14 @@ _DEFAULT_HOST = "https://aleeup.com"
 
 
 @dataclass
-class BrowserBashReply:
+class BrowserPilotReply:
     reply: str
     model: str          # informational — the server-side model under test
     mode: str           # "live"
 
 
-class BrowserBashClient:
-    """Thin wrapper around the live aleepup BrowserBash bot chat endpoint."""
+class BrowserPilotClient:
+    """Thin wrapper around the live aleepup BrowserPilot bot chat endpoint."""
 
     def __init__(
         self,
@@ -60,10 +60,10 @@ class BrowserBashClient:
             "content-type": "application/json",
             "origin": self._origin,
             "referer": self._referer,
-            "user-agent": "aleepup-browserbash-deepeval/1.0",
+            "user-agent": "aleepup-browser-pilot-deepeval/1.0",
         }
 
-    def chat(self, message: str) -> BrowserBashReply:
+    def chat(self, message: str) -> BrowserPilotReply:
         r = requests.post(
             self.bot_url,
             json={"message": message, "visitorId": self.visitor_id},
@@ -71,7 +71,7 @@ class BrowserBashClient:
             timeout=self.timeout,
         )
         r.raise_for_status()
-        return BrowserBashReply(
+        return BrowserPilotReply(
             reply=r.text.strip(),
             model=self.model_under_test,
             mode="live",

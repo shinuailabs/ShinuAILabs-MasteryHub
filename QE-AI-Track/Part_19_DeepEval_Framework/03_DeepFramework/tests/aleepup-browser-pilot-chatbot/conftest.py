@@ -1,15 +1,15 @@
-"""Local fixtures + guards for the aleepup-browserbash-chatbot suite.
+"""Local fixtures + guards for the aleepup-browser-pilot-chatbot suite.
 
-This suite points the seven chatbot metrics at the *live* BrowserBash bot on the
+This suite points the seven chatbot metrics at the *live* BrowserPilot bot on the
 aleepup.com platform. Two things differ from the local-chatbot suite:
 
 1. The target is remote and black-box — replies are plain text from the bot's
-   widget API (``targets/aleepup_browserbash.py``). The model answering is
+   widget API (``targets/aleepup_browser-pilot.py``). The model answering is
    DeepSeek server-side.
 2. The judge is **always** OpenAI ``gpt-5-mini`` — this conftest overrides the
    repo-wide ``judge`` fixture so ``JUDGE_PROVIDER`` in ``.env`` is ignored here.
 
-Tests marked ``needs_browserbash`` auto-skip when the live bot is unreachable, so
+Tests marked ``needs_browser-pilot`` auto-skip when the live bot is unreachable, so
 the suite degrades gracefully offline / when rate-limited.
 """
 from __future__ import annotations
@@ -17,7 +17,7 @@ from __future__ import annotations
 import pytest
 
 from llm_providers import get_openai_judge
-from targets import BrowserBashClient
+from targets import BrowserPilotClient
 
 
 # -------------------- judge (overrides the root fixture) --------------------
@@ -31,8 +31,8 @@ def judge():
 # -------------------- target --------------------
 
 @pytest.fixture(scope="session")
-def browserbash_chatbot():
-    return BrowserBashClient()
+def browser-pilot_chatbot():
+    return BrowserPilotClient()
 
 
 # -------------------- liveness guard (checked once per session) --------------------
@@ -43,17 +43,17 @@ _ALIVE: bool | None = None
 def _bot_alive() -> bool:
     global _ALIVE
     if _ALIVE is None:
-        _ALIVE = BrowserBashClient().is_alive()
+        _ALIVE = BrowserPilotClient().is_alive()
     return _ALIVE
 
 
 def pytest_runtest_setup(item):
-    if item.get_closest_marker("needs_browserbash") and not _bot_alive():
+    if item.get_closest_marker("needs_browser-pilot") and not _bot_alive():
         pytest.skip(
-            "Live BrowserBash bot unreachable (offline / rate-limited / CORS) — "
-            "skipping aleepup-browserbash-chatbot suite"
+            "Live BrowserPilot bot unreachable (offline / rate-limited / CORS) — "
+            "skipping aleepup-browser-pilot-chatbot suite"
         )
 
 
 def pytest_report_header(config):
-    return "aleepup-browserbash-chatbot judge provider=openai model=gpt-5-mini"
+    return "aleepup-browser-pilot-chatbot judge provider=openai model=gpt-5-mini"

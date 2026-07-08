@@ -132,10 +132,10 @@ class ChatbotClient:
         return ChatbotReply(reply=d["reply"], model=d["model"], mode=d["mode"])
 ```
 
-**Hosted black-box bot** (plain text, `visitorId`, no history) — the BrowserBash shape:
+**Hosted black-box bot** (plain text, `visitorId`, no history) — the BrowserPilot shape:
 
 ```python
-class BrowserBashClient:
+class BrowserPilotClient:
     def __init__(self, bot_url=None, visitor_id=None, timeout=60):
         self.bot_url = bot_url or os.getenv("BROWSERBASH_URL", "https://aleeup.com/api/.../NqLIxxNfaoPeChEFeF8nj")
         self.visitor_id = visitor_id or os.getenv("BROWSERBASH_VISITOR", "deepeval-tester")
@@ -143,7 +143,7 @@ class BrowserBashClient:
     def chat(self, message, history=None):
         r = requests.post(self.bot_url, json={"message": message, "visitorId": self.visitor_id}, timeout=self.timeout)
         r.raise_for_status()
-        return BrowserBashReply(reply=r.text, model="server-side (black box)", mode="live")  # plain text!
+        return BrowserPilotReply(reply=r.text, model="server-side (black box)", mode="live")  # plain text!
 ```
 
 ## `datasets/<app>_goldens.py`

@@ -10,18 +10,18 @@ from deepeval import assert_test
 from deepeval.test_case import LLMTestCase
 
 from dashboard.registry import _correctness
-from datasets.aleepup_browserbash_goldens import BROWSERBASH_GOLDENS
+from datasets.aleepup_browser-pilot_goldens import BROWSERBASH_GOLDENS
 
 _THRESHOLD = 0.6
 
 
-@pytest.mark.browserbash
+@pytest.mark.browser-pilot
 @pytest.mark.quality
 @pytest.mark.slow
-@pytest.mark.needs_browserbash
+@pytest.mark.needs_browser-pilot
 @pytest.mark.parametrize("golden", BROWSERBASH_GOLDENS, ids=lambda g: g.input[:45])
-def test_browserbash_correctness(browserbash_chatbot, judge, golden):
-    reply = browserbash_chatbot.chat(golden.input).reply
+def test_browser-pilot_correctness(browser-pilot_chatbot, judge, golden):
+    reply = browser-pilot_chatbot.chat(golden.input).reply
     tc = LLMTestCase(
         input=golden.input,
         actual_output=reply,

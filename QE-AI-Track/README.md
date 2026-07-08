@@ -90,7 +90,7 @@ By the end of this track, you'll be able to:
 - LLM output validation
 
 ### Part 20 — Browser Automation
-- AI-driven browser testing with Browserbash
+- AI-driven browser testing with Browser-pilot
 
 ### Part 21 — LangChain
 - Advanced LLM orchestration patterns

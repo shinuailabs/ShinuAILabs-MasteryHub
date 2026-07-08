@@ -2,7 +2,7 @@
 dashboard/runs.jsonl
 dashboard/goldens_chatbot.json
 dashboard/goldens_rag.json
-dashboard/goldens_browserbash.json
+dashboard/goldens_browser-pilot.json
 
 # deepeval cache / telemetry
 .deepeval/

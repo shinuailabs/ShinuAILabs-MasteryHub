@@ -4,7 +4,7 @@ description: >-
   Set up a DeepEval LLM-as-judge evaluation framework from scratch for any
   chatbot, RAG pipeline, AI agent, or LLM-backed app under test — the same
   architecture used in Chapter 19 (ShopSphere chatbot, RAG Explorer, and the
-  live BrowserBash bot). Use this skill WHENEVER the user wants to "evaluate",
+  live BrowserPilot bot). Use this skill WHENEVER the user wants to "evaluate",
   "test", "score", "benchmark", "add metrics to", "measure quality of", or
   "QA" a chatbot / RAG / agent / LLM app, or asks to "set up DeepEval", "build
   an eval harness", "judge an LLM", "add a new eval target", "add a metric",

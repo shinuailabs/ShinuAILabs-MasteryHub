@@ -66,7 +66,7 @@
           <select id="target">
             <option value="chatbot">Chatbot (A)</option>
             <option value="rag">RAG Explorer (B)</option>
-            <option value="browserbash">BrowserBash (live)</option>
+            <option value="browser-pilot">BrowserPilot (live)</option>
             <option value="all" class="run-only">All</option>
             <option value="synthetic" class="run-only">Synthetic</option>
           </select>
@@ -89,7 +89,7 @@
     <!-- ---------- PANEL: OVERVIEW ---------- -->
     <section class="panel active" id="panel-overview">
       <div class="ov-hero" id="ov-hero"></div>
-      <div class="ov-sec-title">Subsystems under test <span class="muted">— chatbot, RAG &amp; BrowserBash</span></div>
+      <div class="ov-sec-title">Subsystems under test <span class="muted">— chatbot, RAG &amp; BrowserPilot</span></div>
       <div class="ov-grid2" id="ov-targets"></div>
       <div class="ov-sec-title">Metric coverage <span class="muted" id="ov-cov-sub"></span></div>
       <div class="cov" id="ov-coverage"></div>
@@ -165,7 +165,7 @@ let activePanel = "datasets";
 let counts = { pass: 0, fail: 0, pending: 0 };
 
 const PANEL_META = {
-  overview: ["Overview", "Analytics across the chatbot, RAG & BrowserBash subsystems"],
+  overview: ["Overview", "Analytics across the chatbot, RAG & BrowserPilot subsystems"],
   datasets: ["Golden Datasets", "View, edit and save the chatbot & RAG goldens"],
   run: ["Run Metrics", "Run any metric individually or all at once"],
   logs: ["Runs & Logs", "Every local run, captured before Confident AI"],
@@ -332,7 +332,7 @@ $("#run-all").addEventListener("click", async () => {
 
 /* ================= GOLDEN DATASETS ================= */
 let gFields = [];
-const TARGET_LABEL = { chatbot: "Chatbot", rag: "RAG", browserbash: "BrowserBash" };
+const TARGET_LABEL = { chatbot: "Chatbot", rag: "RAG", browser-pilot: "BrowserPilot" };
 function goldenTarget() {
   const t = $("#target").value;
   return TARGET_LABEL[t] ? t : "chatbot";
@@ -407,7 +407,7 @@ function dotClass(m) {
 }
 async function loadRuns() {
   const t = $("#target").value;
-  const tq = (t === "chatbot" || t === "rag" || t === "browserbash") ? `?target=${t}` : "";
+  const tq = (t === "chatbot" || t === "rag" || t === "browser-pilot") ? `?target=${t}` : "";
   const d = await (await fetch(`/api/runs${tq}`)).json();
   const wrap = $("#sessions");
   if (!d.sessions.length) {
@@ -465,13 +465,13 @@ async function loadOverview() {
   const r = d.runs;
   const mt = d.metrics.by_target;
   $("#ov-hero").innerHTML = [
-    ["", d.metrics.total, "Metrics", `${mt.chatbot || 0} cb · ${mt.rag || 0} rag · ${mt.browserbash || 0} bb`],
-    ["b", d.total_tests, "Test files", `${d.test_files.chatbot} cb · ${d.test_files.rag} rag · ${d.test_files.browserbash} bb`],
-    ["v", d.total_goldens, "Goldens", `${d.goldens.chatbot} cb · ${d.goldens.rag} rag · ${d.goldens.browserbash} bb`],
+    ["", d.metrics.total, "Metrics", `${mt.chatbot || 0} cb · ${mt.rag || 0} rag · ${mt.browser-pilot || 0} bb`],
+    ["b", d.total_tests, "Test files", `${d.test_files.chatbot} cb · ${d.test_files.rag} rag · ${d.test_files.browser-pilot} bb`],
+    ["v", d.total_goldens, "Goldens", `${d.goldens.chatbot} cb · ${d.goldens.rag} rag · ${d.goldens.browser-pilot} bb`],
     ["a", r.sessions, "Runs captured", `${r.cases} cases · ${r.pass_rate}% pass`],
   ].map(([cls, big, lbl, sub]) => `<div class="ov-stat ${cls}"><div class="big">${big}</div><div class="lbl">${lbl}</div><div class="sub2">${sub}</div></div>`).join("");
 
-  const TCLS = { chatbot: 'cb', rag: 'rg', browserbash: 'bb' };
+  const TCLS = { chatbot: 'cb', rag: 'rg', browser-pilot: 'bb' };
   const tcard = (key, t) => {
     const rt = t.runs; const pr = rt.cases ? Math.round(rt.passed / rt.cases * 100) : 0;
     return `<div class="tcard ${TCLS[key] || ''}">

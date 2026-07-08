@@ -20,7 +20,7 @@ flowchart LR
     C["🧑‍⚖️ Subsystem C<br/>DeepEval Framework<br/>switchable judge LLM"]
     A["Subsystem A<br/>ShopSphere Chatbot<br/>:8201"]
     B["Subsystem B<br/>RAG Explorer<br/>:8202"]
-    BB["Subsystem BB<br/>BrowserBash live bot<br/>aleeup.com · DeepSeek (black box)"]
+    BB["Subsystem BB<br/>BrowserPilot live bot<br/>aleeup.com · DeepSeek (black box)"]
 
     C -->|HTTP| A
     C -->|HTTP| B
@@ -122,7 +122,7 @@ See [`02_RAG_Explorer/02_rag_explorer/README.md`](02_RAG_Explorer/02_rag_explore
 
 **Concept:** One metric registry (`dashboard/registry.py`, **29 metric × target rows**) drives
 **two surfaces** — a `pytest` / `deepeval test run` CI suite *and* an interactive web dashboard —
-against **three targets**: the local chatbot (A), the local RAG app (B), and **BrowserBash (BB)**,
+against **three targets**: the local chatbot (A), the local RAG app (B), and **BrowserPilot (BB)**,
 a live black-box bot on `aleeup.com` answered server-side by DeepSeek that we only reach over HTTP.
 
 **Why:** The judge LLM is deliberately separate from every app under test — that separation is the
@@ -131,7 +131,7 @@ whole point of LLM-as-judge. And evaluating a vendor bot you *don't* control (BB
 **Q&A — why use this?**
 - **Q: How do I switch the judge?** A: One env var. `JUDGE_PROVIDER=openai|groq|ollama` — the same `CompatibleJudge` works for all three because each exposes an OpenAI-compatible endpoint (`instructor` handles structured output).
 - **Q: pytest or dashboard?** A: pytest for CI (per-golden cases, markers, optional Confident AI push); the `:8203` dashboard for teaching/demos (click a metric → live score/pass/fail/reason, edit goldens, browse local run history).
-- **Q: Why is BrowserBash a "black box"?** A: It returns **plain text** (not JSON), takes `{message, visitorId}`, and we never see its model — exactly how you'd grade a third-party chatbot in production.
+- **Q: Why is BrowserPilot a "black box"?** A: It returns **plain text** (not JSON), takes `{message, visitorId}`, and we never see its model — exactly how you'd grade a third-party chatbot in production.
 
 ```mermaid
 flowchart LR
@@ -140,7 +140,7 @@ flowchart LR
     JP{JUDGE_PROVIDER} --> J[CompatibleJudge<br/>openai · groq · ollama]
     PY --> J
     DASH --> J
-    J --> T[targets: chatbot · rag · browserbash]
+    J --> T[targets: chatbot · rag · browser-pilot]
     T --> V[Pass/Fail + Score + Reason]
 
     style REG fill:#fef3c7,stroke:#92400e
@@ -158,14 +158,14 @@ pip install -r requirements.txt
 export JUDGE_PROVIDER=openai          # or groq / ollama
 
 # 1) pytest — CI, per-golden cases (targets A :8201, B :8202 must be up; BB is live)
-pytest tests/chatbot/ -v              # or tests/rag/ · tests/aleepup-browserbash-chatbot/
+pytest tests/chatbot/ -v              # or tests/rag/ · tests/aleepup-browser-pilot-chatbot/
 pytest -m "chatbot and quality" -v    # filter by marker
 
 # 2) interactive dashboard — click any metric, live verdict
 uvicorn dashboard.app:app --port 8203 # http://localhost:8203
 ```
 
-**Metric coverage (29 rows):** 10 chatbot · 11 RAG · 7 BrowserBash · 1 synthetic.
+**Metric coverage (29 rows):** 10 chatbot · 11 RAG · 7 BrowserPilot · 1 synthetic.
 
 | Scoring direction | Metrics |
 |:---|:---|
@@ -185,7 +185,7 @@ self-contained [`03_DeepFramework/docs/index.html`](03_DeepFramework/docs/index.
 flowchart TD
     A[Subsystem A · Chatbot] --> C
     B[Subsystem B · RAG Explorer] --> C
-    BB[Subsystem BB · BrowserBash live] --> C
+    BB[Subsystem BB · BrowserPilot live] --> C
     C[Subsystem C · DeepEval Framework] --> OUT[Verdicts · dashboard · Confident AI]
 
     style A fill:#fef3c7,stroke:#92400e
@@ -195,7 +195,7 @@ flowchart TD
     style OUT fill:#ede7f6,stroke:#4527a0,stroke-width:2px
 ```
 
-This pairs with [Chapter 20 · BrowserBash](../Part_20_Browserbash/): there you **drive** the
+This pairs with [Chapter 20 · BrowserPilot](../Part_20_Browser-pilot/): there you **drive** the
 live bot through a plain-English E2E journey; here you **grade** that same bot (Subsystem BB).
 
 > Every subsystem keeps its own gitignored `.env` — never commit real keys. Set

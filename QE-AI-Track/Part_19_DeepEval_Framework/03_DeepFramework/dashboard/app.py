@@ -25,7 +25,7 @@ sys.path.insert(0, str(ROOT))
 
 from llm_providers import judge_info  # noqa: E402
 from llm_providers.factory import PROVIDERS, _resolve_provider  # noqa: E402
-from targets import BrowserBashClient, ChatbotClient, RagClient  # noqa: E402
+from targets import BrowserPilotClient, ChatbotClient, RagClient  # noqa: E402
 
 from . import goldens_store, runs_store  # noqa: E402
 from .registry import REGISTRY, REGISTRY_BY_ID, list_for_target  # noqa: E402
@@ -135,8 +135,8 @@ class GoldensRequest(BaseModel):
 
 @app.get("/api/goldens")
 def get_goldens(target: str = "chatbot"):
-    if target not in ("chatbot", "rag", "browserbash"):
-        raise HTTPException(400, "target must be 'chatbot', 'rag' or 'browserbash'")
+    if target not in ("chatbot", "rag", "browser-pilot"):
+        raise HTTPException(400, "target must be 'chatbot', 'rag' or 'browser-pilot'")
     return {
         "target": target,
         "fields": goldens_store.fields(target),
@@ -147,8 +147,8 @@ def get_goldens(target: str = "chatbot"):
 
 @app.put("/api/goldens")
 def put_goldens(req: GoldensRequest):
-    if req.target not in ("chatbot", "rag", "browserbash"):
-        raise HTTPException(400, "target must be 'chatbot', 'rag' or 'browserbash'")
+    if req.target not in ("chatbot", "rag", "browser-pilot"):
+        raise HTTPException(400, "target must be 'chatbot', 'rag' or 'browser-pilot'")
     n = goldens_store.save(req.target, req.items)
     return {"saved": n, "target": req.target, "overridden": True}
 
@@ -156,8 +156,8 @@ def put_goldens(req: GoldensRequest):
 @app.post("/api/goldens/reset")
 def reset_goldens(req: dict):
     target = req.get("target", "chatbot")
-    if target not in ("chatbot", "rag", "browserbash"):
-        raise HTTPException(400, "target must be 'chatbot', 'rag' or 'browserbash'")
+    if target not in ("chatbot", "rag", "browser-pilot"):
+        raise HTTPException(400, "target must be 'chatbot', 'rag' or 'browser-pilot'")
     n = goldens_store.reset(target)
     return {"reset": n, "target": target, "overridden": False}
 
@@ -188,12 +188,12 @@ def _count_test_files(subdir: str) -> int:
 _BB_ALIVE: bool | None = None
 
 
-def _browserbash_alive() -> bool:
-    """Cached liveness for the live BrowserBash bot (one bounded probe per process)."""
+def _browser-pilot_alive() -> bool:
+    """Cached liveness for the live BrowserPilot bot (one bounded probe per process)."""
     global _BB_ALIVE
     if _BB_ALIVE is None:
         try:
-            _BB_ALIVE = BrowserBashClient(timeout=8).is_alive()
+            _BB_ALIVE = BrowserPilotClient(timeout=8).is_alive()
         except Exception:
             _BB_ALIVE = False
     return _BB_ALIVE
@@ -210,12 +210,12 @@ def overview():
     test_files = {
         "chatbot": _count_test_files("chatbot"),
         "rag": _count_test_files("rag"),
-        "browserbash": _count_test_files("aleepup-browserbash-chatbot"),
+        "browser-pilot": _count_test_files("aleepup-browser-pilot-chatbot"),
     }
     goldens = {
         "chatbot": len(goldens_store.load("chatbot")),
         "rag": len(goldens_store.load("rag")),
-        "browserbash": len(goldens_store.load("browserbash")),
+        "browser-pilot": len(goldens_store.load("browser-pilot")),
     }
 
     sess = runs_store.sessions()
@@ -240,11 +240,11 @@ def overview():
             "metrics": by_target.get("rag", 0), "goldens": goldens["rag"], "tests": test_files["rag"],
             "runs": runs_by_target.get("rag", {"sessions": 0, "cases": 0, "passed": 0}),
         },
-        "browserbash": {
-            "label": "BrowserBash (live)", "subsystem": "BB", "alive": _browserbash_alive(),
-            "url": BrowserBashClient().bot_url, "metrics": by_target.get("browserbash", 0),
-            "goldens": goldens["browserbash"], "tests": test_files["browserbash"],
-            "runs": runs_by_target.get("browserbash", {"sessions": 0, "cases": 0, "passed": 0}),
+        "browser-pilot": {
+            "label": "BrowserPilot (live)", "subsystem": "BB", "alive": _browser-pilot_alive(),
+            "url": BrowserPilotClient().bot_url, "metrics": by_target.get("browser-pilot", 0),
+            "goldens": goldens["browser-pilot"], "tests": test_files["browser-pilot"],
+            "runs": runs_by_target.get("browser-pilot", {"sessions": 0, "cases": 0, "passed": 0}),
         },
     }
     return {

@@ -13,7 +13,7 @@ from pathlib import Path
 from types import SimpleNamespace
 from typing import Any
 
-from datasets.aleepup_browserbash_goldens import BROWSERBASH_GOLDENS
+from datasets.aleepup_browser-pilot_goldens import BROWSERBASH_GOLDENS
 from datasets.chatbot_goldens import CHQE-AI-TrackOT_GOLDENS
 from datasets.rag_goldens import RAG_GOLDENS
 
@@ -21,19 +21,19 @@ HERE = Path(__file__).resolve().parent
 FILES = {
     "chatbot": HERE / "goldens_chatbot.json",
     "rag": HERE / "goldens_rag.json",
-    "browserbash": HERE / "goldens_browserbash.json",
+    "browser-pilot": HERE / "goldens_browser-pilot.json",
 }
 FIELDS = {
     "chatbot": ["input", "expected_output", "context", "categories"],
     "rag": ["input", "expected_output", "expected_context_keywords", "expected_sources", "categories"],
-    "browserbash": ["input", "expected_output", "context", "categories"],
+    "browser-pilot": ["input", "expected_output", "context", "categories"],
 }
 LIST_FIELDS = {"context", "categories", "expected_context_keywords", "expected_sources"}
 
 _SEEDS = {
     "chatbot": CHQE-AI-TrackOT_GOLDENS,
     "rag": RAG_GOLDENS,
-    "browserbash": BROWSERBASH_GOLDENS,
+    "browser-pilot": BROWSERBASH_GOLDENS,
 }
 
 

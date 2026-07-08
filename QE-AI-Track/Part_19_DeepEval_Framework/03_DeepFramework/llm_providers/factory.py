@@ -64,7 +64,7 @@ def judge_info() -> dict:
 
 
 # ---------------------------------------------------------------------------
-# Pinned judge for the live aleepup-browserbash-chatbot suite.
+# Pinned judge for the live aleepup-browser-pilot-chatbot suite.
 #
 # That suite must ALWAYS grade with OpenAI gpt-5-mini, regardless of the
 # repo-wide JUDGE_PROVIDER in .env, so its live-bot scores stay comparable
@@ -80,7 +80,7 @@ def get_openai_judge(model: str | None = None) -> CompatibleJudge:
     api_key = os.getenv("OPENAI_API_KEY")
     if not api_key:
         raise RuntimeError(
-            "OPENAI_API_KEY is missing — the aleepup-browserbash-chatbot suite "
+            "OPENAI_API_KEY is missing — the aleepup-browser-pilot-chatbot suite "
             "judges with OpenAI gpt-5-mini. Add OPENAI_API_KEY to the .env."
         )
     resolved = model or os.getenv("BROWSERBASH_JUDGE_MODEL", OPENAI_JUDGE_DEFAULT)

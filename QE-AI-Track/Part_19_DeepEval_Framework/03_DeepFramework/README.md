@@ -12,7 +12,7 @@ interactive web **dashboard** for teaching and demos.
 |---|-----------|------------|------------|
 | A | **ShopSphere Chatbot** | local React + FastAPI + Groq support bot | `http://localhost:8201/chat` |
 | B | **RAG Explorer** | Ollama-embed + ChromaDB + Groq retrieval pipeline | `http://localhost:8202/api/chat` |
-| BB | **BrowserBash (live)** | the live black-box bot on `aleeup.com` (DeepSeek server-side) | `https://aleeup.com/api/bots/<id>/chat` |
+| BB | **BrowserPilot (live)** | the live black-box bot on `aleeup.com` (DeepSeek server-side) | `https://aleeup.com/api/bots/<id>/chat` |
 
 The judge LLM is separate from every app under test — that separation is the
 whole point of LLM-as-judge.
@@ -28,7 +28,7 @@ Set `JUDGE_PROVIDER` to one of:
 One `CompatibleJudge` class works for all three (OpenAI-compatible wire +
 `instructor` for structured output). Reasoning judges (`gpt-5-*`, `o1`/`o3`/`o4`)
 only allow the default temperature, so `base.py` drops `temperature=0` for them
-automatically. The BrowserBash suite always judges with OpenAI `gpt-5-mini`.
+automatically. The BrowserPilot suite always judges with OpenAI `gpt-5-mini`.
 
 ## The dashboard
 
@@ -42,7 +42,7 @@ A collapsible-sidebar UI with four panels:
 - **Overview** — analytics across all three subsystems: metric / golden / test-file
   counts, per-subsystem health + pass rates, metric coverage, and recent runs.
 - **Golden Datasets** — view, edit, add, delete and **save** the goldens for the
-  chatbot, RAG and BrowserBash bots (saved edits become a local override the
+  chatbot, RAG and BrowserPilot bots (saved edits become a local override the
   runner evaluates against).
 - **Run Metrics** — run any metric individually or all at once; live
   score / pass / fail / reason.
@@ -76,23 +76,23 @@ uvicorn dashboard.app:app --port 8203
 ```
 03_DeepFramework/
 ├── conftest.py                 fixtures (judge, chatbot, rag, goldens) + run-history capture hook
-├── pytest.ini                  markers (chatbot/rag/browserbash/quality/safety/...)
+├── pytest.ini                  markers (chatbot/rag/browser-pilot/quality/safety/...)
 ├── llm_providers/
 │   ├── base.py                 CompatibleJudge (OpenAI/Groq/Ollama; reasoning-model safe)
 │   └── factory.py              get_judge() / get_openai_judge() from JUDGE_PROVIDER
 ├── targets/
 │   ├── chatbot.py              HTTP client → Subsystem A
 │   ├── rag_pipeline.py         HTTP client → Subsystem B
-│   └── aleepup_browserbash.py  HTTP client → live BrowserBash bot (BB)
+│   └── aleepup_browser-pilot.py  HTTP client → live BrowserPilot bot (BB)
 ├── datasets/
 │   ├── chatbot_goldens.py             19 goldens + 13 safety prompts
 │   ├── rag_goldens.py                 8 goldens with expected sources/keywords
-│   └── aleepup_browserbash_goldens.py 14 goldens + safety + PII probes
+│   └── aleepup_browser-pilot_goldens.py 14 goldens + safety + PII probes
 ├── dashboard/
 │   ├── app.py                  FastAPI app on :8203 (UI + REST)
 │   ├── registry.py             29 MetricDef rows — single source of truth
 │   ├── runner.py               runs one metric end-to-end (target-aware)
-│   ├── goldens_store.py        editable/savable goldens (chatbot/rag/browserbash)
+│   ├── goldens_store.py        editable/savable goldens (chatbot/rag/browser-pilot)
 │   ├── runs_store.py           local run history (the Runs & Logs tab)
 │   ├── templates/dashboard.html
 │   └── static/dashboard.css
@@ -101,7 +101,7 @@ uvicorn dashboard.app:app --port 8203
     ├── test_00_smoke.py
     ├── chatbot/                7 chatbot metric suites (test_01..07)
     ├── rag/                    11 RAG metric suites (test_01..11)
-    └── aleepup-browserbash-chatbot/  7 live-bot metric suites (test_01..07)
+    └── aleepup-browser-pilot-chatbot/  7 live-bot metric suites (test_01..07)
 ```
 
 ## Scoring conventions

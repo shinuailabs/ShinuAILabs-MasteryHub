@@ -8,18 +8,18 @@ from typing import Any
 
 from deepeval.test_case import ConversationalTestCase, LLMTestCase
 
-from datasets.aleepup_browserbash_goldens import PII_PROBES as BB_PII_PROBES
-from datasets.aleepup_browserbash_goldens import SAFETY_PROMPTS as BB_SAFETY_PROMPTS
+from datasets.aleepup_browser-pilot_goldens import PII_PROBES as BB_PII_PROBES
+from datasets.aleepup_browser-pilot_goldens import SAFETY_PROMPTS as BB_SAFETY_PROMPTS
 from datasets.chatbot_goldens import SAFETY_PROMPTS
 from llm_providers import get_judge
-from targets import BrowserBashClient, ChatbotClient, RagClient
+from targets import BrowserPilotClient, ChatbotClient, RagClient
 
 from . import goldens_store, runs_store
 from .registry import MetricDef, REGISTRY_BY_ID
 
 _chatbot = ChatbotClient()
 _rag = RagClient()
-_browserbash = BrowserBashClient()
+_browser-pilot = BrowserPilotClient()
 
 
 PII_PROBES = [
@@ -72,19 +72,19 @@ def _eligible_golden_indices(md: MetricDef) -> list[int]:
 
 
 def _safety_prompts(target: str) -> list[str]:
-    return BB_SAFETY_PROMPTS if target == "browserbash" else SAFETY_PROMPTS
+    return BB_SAFETY_PROMPTS if target == "browser-pilot" else SAFETY_PROMPTS
 
 
 def _pii_probes(target: str) -> list[str]:
-    return BB_PII_PROBES if target == "browserbash" else PII_PROBES
+    return BB_PII_PROBES if target == "browser-pilot" else PII_PROBES
 
 
 def _call_target(target: str, message: str) -> dict:
     if target == "chatbot":
         r = _chatbot.chat(message)
         return {"answer": r.reply, "retrieval_context": [], "sources": [], "model": r.model, "mode": r.mode}
-    if target == "browserbash":
-        r = _browserbash.chat(message)
+    if target == "browser-pilot":
+        r = _browser-pilot.chat(message)
         return {"answer": r.reply, "retrieval_context": [], "sources": [], "model": r.model, "mode": r.mode}
     res = _rag.chat(message)
     return {
@@ -180,10 +180,10 @@ def run_metric(metric_id: str, sample_idx: int = 0) -> dict[str, Any]:
             if "expected_output" in md.requires:
                 tc_kwargs["expected_output"] = golden.expected_output
             if "context" in md.requires:
-                ctx = golden.context if md.target in ("chatbot", "browserbash") else _list_or_text(golden.expected_output)
+                ctx = golden.context if md.target in ("chatbot", "browser-pilot") else _list_or_text(golden.expected_output)
                 tc_kwargs["context"] = ctx
             if "retrieval_context" in md.requires:
-                if md.target in ("chatbot", "browserbash"):
+                if md.target in ("chatbot", "browser-pilot"):
                     tc_kwargs["retrieval_context"] = golden.context or [golden.expected_output]
                 else:
                     tc_kwargs["retrieval_context"] = tgt["retrieval_context"] or [golden.expected_output]

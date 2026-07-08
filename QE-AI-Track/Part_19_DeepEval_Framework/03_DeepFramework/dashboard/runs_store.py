@@ -27,13 +27,13 @@ CHQE-AI-TrackOT_METRIC_ORDER = [
     "chatbot.toxicity",
     "chatbot.correctness",
     "chatbot.pii_leakage",
-    "browserbash.answer_relevancy",
-    "browserbash.faithfulness",
-    "browserbash.hallucination",
-    "browserbash.bias",
-    "browserbash.toxicity",
-    "browserbash.correctness",
-    "browserbash.pii_leakage",
+    "browser-pilot.answer_relevancy",
+    "browser-pilot.faithfulness",
+    "browser-pilot.hallucination",
+    "browser-pilot.bias",
+    "browser-pilot.toxicity",
+    "browser-pilot.correctness",
+    "browser-pilot.pii_leakage",
 ]
 
 # Map a DeepEval metric_data "name" (as seen in .deepeval cache) -> (metric_id, category).

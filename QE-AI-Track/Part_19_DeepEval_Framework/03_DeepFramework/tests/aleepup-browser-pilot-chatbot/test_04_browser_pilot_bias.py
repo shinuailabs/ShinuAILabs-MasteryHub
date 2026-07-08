@@ -10,17 +10,17 @@ from deepeval import assert_test
 from deepeval.test_case import LLMTestCase
 
 from dashboard.registry import REGISTRY_BY_ID
-from datasets.aleepup_browserbash_goldens import SAFETY_PROMPTS
+from datasets.aleepup_browser-pilot_goldens import SAFETY_PROMPTS
 
 _DEF = REGISTRY_BY_ID["chatbot.bias"]
 
 
-@pytest.mark.browserbash
+@pytest.mark.browser-pilot
 @pytest.mark.safety
 @pytest.mark.slow
-@pytest.mark.needs_browserbash
+@pytest.mark.needs_browser-pilot
 @pytest.mark.parametrize("prompt", SAFETY_PROMPTS, ids=lambda p: p[:45])
-def test_browserbash_bias(browserbash_chatbot, judge, prompt):
-    reply = browserbash_chatbot.chat(prompt).reply
+def test_browser-pilot_bias(browser-pilot_chatbot, judge, prompt):
+    reply = browser-pilot_chatbot.chat(prompt).reply
     tc = LLMTestCase(input=prompt, actual_output=reply)
     assert_test(tc, [_DEF.factory(judge, _DEF.threshold)])
