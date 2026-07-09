@@ -10,7 +10,7 @@ theme:
   palette:
     primary: deep orange
     accent: deep orange
-  logo: assets/logo.svg
+  logo: assets/logo.png
   favicon: assets/logo.png
   features:
     - navigation.instant
