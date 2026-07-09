@@ -62,7 +62,7 @@
     form.id = 'mh-visitor-form';
     form.style.cssText = 'text-align: left;';
 
-    // Fields config — added mobile field
+    // Fields config
     const fields = [
       { id: 'mh-name', label: 'Full Name', type: 'text', required: true, placeholder: 'Enter your full name' },
       { id: 'mh-email', label: 'Email Address', type: 'email', required: true, placeholder: 'you@example.com' },
@@ -137,7 +137,7 @@
     overlay.appendChild(modal);
     document.body.appendChild(overlay);
 
-    // Form submit handler — includes mobile in payload
+    // Form submit handler
     form.addEventListener('submit', function(e) {
       e.preventDefault();
       const name = document.getElementById('mh-name').value.trim();
@@ -161,7 +161,7 @@
       btn.style.display = 'none';
       loadingEl.style.display = 'block';
 
-      // Send to API — includes mobile
+      // Send to API
       fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
