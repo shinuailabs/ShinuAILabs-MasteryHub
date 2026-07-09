@@ -10,12 +10,16 @@ theme:
   palette:
     primary: deep orange
     accent: deep orange
+  logo: assets/logo.svg
+  favicon: assets/logo.png
   features:
     - navigation.instant
     - navigation.tracking
     - navigation.top
     - search.highlight
     - search.suggest
+  icon:
+    repo: fontawesome/brands/github
 
 extra:
   social:
