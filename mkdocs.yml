@@ -1,0 +1,78 @@
+site_name: ShinuAILabs-MasteryHub
+site_description: A community learning engine for Quality Engineers mastering AI
+site_url: https://masteryhub.shinuailabs.com
+repo_url: https://github.com/shinuailabs/ShinuAILabs-MasteryHub
+edit_uri: edit/main/docs/
+copyright: Built with ❤️ by Shinu AI Labs
+
+theme:
+  name: material
+  palette:
+    primary: deep orange
+    accent: deep orange
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.top
+    - search.highlight
+    - search.suggest
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/shinuailabs
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com/in/shinoj-narayan
+    - icon: fontawesome/brands/youtube
+      link: https://youtube.com/@shinuailabs
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.emoji
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - QE-AI-Track:
+    - Overview: qe-ai/README.md
+    - Part 01 - LLM Basics: qe-ai/part-01.md
+    - Part 02 - Prompt Engineering: qe-ai/part-02.md
+    - Part 03 - Job Assistant AI: qe-ai/part-03.md
+    - Part 04 - AI Agents: qe-ai/part-04.md
+    - Part 05 - AI Agents (n8n): qe-ai/part-05.md
+    - Part 06 - AI Agents (LangFlow): qe-ai/part-06.md
+    - Part 07 - Vibe Coding: qe-ai/part-07.md
+    - Part 08 - RAG: qe-ai/part-08.md
+    - Part 09 - Multi-Source QA Copilot: qe-ai/part-09.md
+    - Part 10 - MCP Basics: qe-ai/part-10.md
+    - Part 11 - Python for QA: qe-ai/part-11.md
+    - Part 12 - MCP Creation: qe-ai/part-12.md
+    - Part 13 - CrewAI Agents: qe-ai/part-13.md
+    - Part 14 - CrewAI QA Pipeline: qe-ai/part-14.md
+    - Part 15 - Production QA Pipeline: qe-ai/part-15.md
+    - Part 16-19 - DeepEval: qe-ai/part-16-19.md
+    - Part 20 - Browser Pilot: qe-ai/part-20.md
+    - Part 21 - LangChain: qe-ai/part-21.md
+  - Playwright-Pro-Track:
+    - Overview: playwright-pro/README.md
+    - Part 01 - JavaScript: playwright-pro/part-01.md
+    - Part 02 - TypeScript: playwright-pro/part-02.md
+    - Part 03 - Playwright Fundamentals: playwright-pro/part-03.md
+    - Part 04 - Playwright Advanced: playwright-pro/part-04.md
+    - Part 05 - POM: playwright-pro/part-05.md
+    - Part 06 - Cucumber BDD: playwright-pro/part-06.md
+    - Part 07 - Docker: playwright-pro/part-07.md
+    - Part 08 - Jenkins: playwright-pro/part-08.md
+    - Part 09 - GitHub Actions: playwright-pro/part-09.md
+    - Part 10 - AI Testing: playwright-pro/part-10.md
+    - Part 11 - AI Projects: playwright-pro/part-11.md
+    - Part 12 - Modern Patterns: playwright-pro/part-12.md
+    - Part 13 - Cloud Infrastructure: playwright-pro/part-13.md
+    - Part 14 - AI Agents & MCP: playwright-pro/part-14.md
+    - Part 15 - Interview & Career: playwright-pro/part-15.md
+  - Community: community.md
+  - Contributing: contributing.md
