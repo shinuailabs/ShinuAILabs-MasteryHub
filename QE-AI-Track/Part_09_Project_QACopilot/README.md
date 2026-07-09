@@ -372,4 +372,4 @@ sudo systemctl list-timers | grep qacopilot
 
 ## Author
 
-**Shinoj K Narayan** · Principal SDET · Shinu AI Labs · 2026 Edition
+**Shinoj K Narayan** · Shinu AI Labs · 2026 Edition

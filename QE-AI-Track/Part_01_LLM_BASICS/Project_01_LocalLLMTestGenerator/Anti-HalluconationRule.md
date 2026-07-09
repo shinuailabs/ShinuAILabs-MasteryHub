@@ -1,9 +1,8 @@
 # Anti-Hallucination Rules
 
 - **Author:** Shinoj K Narayan
-- **Role:** Principal SDET
 - **Website:** [Shinu AI Labs](https://shinuailabs.com/)
-- **LinkedIn:** [linkedin.com/in/shinojdutta](https://www.linkedin.com/in/shinojdutta/)
+- **LinkedIn:** [linkedin.com/in/shinoj-narayan](https://www.linkedin.com/in/shinoj-narayan/)
 
 ---
 

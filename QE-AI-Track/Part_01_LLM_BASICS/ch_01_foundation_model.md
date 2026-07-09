@@ -1,9 +1,8 @@
 # Part 1: Foundation Model
 
-- **Author:** Prrammod Dutta
-- **Role:** Principal SDET
+- **Author:** Shinoj K Narayan
 - **Website:** [Shinu AI Labs](https://shinuailabs.com/)
-- **LinkedIn:** [linkedin.com/in/shinojdutta](https://www.linkedin.com/in/shinojdutta/)
+- **LinkedIn:** [linkedin.com/in/shinoj-narayan](https://www.linkedin.com/in/shinoj-narayan/)
 
 ---
 

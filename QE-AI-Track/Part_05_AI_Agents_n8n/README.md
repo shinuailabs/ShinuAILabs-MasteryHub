@@ -7,7 +7,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Course-AI%20Tester%20Blueprint%202X-blueviolet?style=for-the-badge" alt="Course Badge" />
-  <img src="https://img.shields.io/badge/Author-Shinoj%20Dutta-orange?style=for-the-badge" alt="Author Badge" />
+  <img src="https://img.shields.io/badge/Author-Shinoj%20K%20Narayan-orange?style=for-the-badge" alt="Author Badge" />
   <img src="https://img.shields.io/badge/Platform-n8n-ff6d5a?style=for-the-badge" alt="n8n Badge" />
   <img src="https://img.shields.io/badge/Batch-2X-success?style=for-the-badge" alt="Batch Badge" />
 </p>
@@ -569,7 +569,7 @@ graph TD
   </tr>
   <tr>
     <td><strong>GitHub</strong></td>
-    <td><a href="https://github.com/ShinojDutta">ShinojDutta</a></td>
+    <td><a href="https://github.com/ShinojDutta">Shinoj K Narayan</a></td>
   </tr>
   <tr>
     <td><strong>Repository</strong></td>

@@ -7,6 +7,6 @@
 - Open the cart and verify it contains exactly 1 item
 - Click Checkout
 - Fill the checkout details: first name Shinoj,
-  last name Dutta, postal code 560001
+  last name Narayan, postal code 560001
 - Continue to the order overview, then click Finish
 - Verify the page shows "Thank you for your order!"
