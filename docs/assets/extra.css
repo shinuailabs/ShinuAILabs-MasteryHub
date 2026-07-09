@@ -1,0 +1,18 @@
+/* Make the ShinuAILabs logo bigger in the header */
+.md-header .md-logo img,
+.md-header .md-logo svg {
+    width: auto;
+    height: 3.2rem;
+}
+
+/* Also enlarge in the drawer/sidebar on mobile */
+.md-drawer .md-logo img,
+.md-drawer .md-logo svg {
+    width: auto;
+    height: 3.2rem;
+}
+
+/* Increase max-height on the header itself so logo doesn't clip */
+.md-header__inner {
+    max-height: 3.8rem;
+}
