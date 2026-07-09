@@ -16,8 +16,8 @@ case CSV, VWO PDFs (PRDs), and JIRA bug markdown exports. Stack:
 
 ```bash
 # Clone source repos into data/ (gitignored)
-git clone https://github.com/ShinojDutta/QE-AI-Track14xSeleniumAdvanceFrameworks data/selenium_repo
-git clone https://github.com/ShinojDutta/Advance-Playwright-Framework  data/playwright_repo
+git clone https://github.com/shinuailabs/QE-AI-Track14xSeleniumAdvanceFrameworks data/selenium_repo
+git clone https://github.com/shinuailabs/Advance-Playwright-Framework  data/playwright_repo
 
 # Backend
 python -m venv .venv && source .venv/bin/activate

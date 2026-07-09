@@ -31,7 +31,7 @@ python3 --version   # expect 3.10+ (developed on 3.12)
 
 ```bash
 cd ~
-git clone https://github.com/ShinojDutta/AITesterBlueprint2x.git
+git clone https://github.com/shinuailabs/AITesterBlueprint2x.git
 cd AITesterBlueprint2x/Part_21_LangChain
 ```
 
@@ -71,7 +71,7 @@ JENKINS_JOB=AdvancePlaywrightFramework1x  # the tool returns a sample log automa
 JENKINS_BUILD=lastBuild
 JENKINS_USER=admin
 JENKINS_TOKEN=admin
-GITHUB_REPO=ShinojDutta/AdvancePlaywrightFramework1x   # public repo -> works with no token
+GITHUB_REPO=shinuailabs/AdvancePlaywrightFramework1x   # public repo -> works with no token
 # GITHUB_TOKEN=ghp_...                    # optional, only raises the rate limit
 HEALTH_URL=https://app.shinuailabs.com/playwright/ttacart/
 

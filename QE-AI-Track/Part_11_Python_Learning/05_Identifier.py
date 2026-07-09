@@ -5,7 +5,7 @@
 # Rule 1: Allowed chars = letters (a-z, A-Z), digits (0-9), underscore (_).
 name = "shinoj"
 user_name = "Shinoj"
-userName2 = "Dutta"
+userName2 = "Narayan"
 print(name, user_name, userName2)
 
 

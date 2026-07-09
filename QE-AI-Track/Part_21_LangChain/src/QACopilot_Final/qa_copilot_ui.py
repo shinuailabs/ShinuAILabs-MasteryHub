@@ -40,7 +40,7 @@ with st.sidebar:
     jenkins_job = st.text_input("JENKINS_JOB", value=os.getenv("JENKINS_JOB", "AdvancePlaywrightFramework1x"))
     jenkins_user = st.text_input("JENKINS_USER", value=os.getenv("JENKINS_USER", "admin"))
     jenkins_token = st.text_input("JENKINS_TOKEN", value="", type="password")
-    github_repo = st.text_input("GITHUB_REPO", value=os.getenv("GITHUB_REPO", "ShinojDutta/AdvancePlaywrightFramework1x"))
+    github_repo = st.text_input("GITHUB_REPO", value=os.getenv("GITHUB_REPO", "shinuailabs/AdvancePlaywrightFramework1x"))
     health_url = st.text_input("HEALTH_URL", value=os.getenv("HEALTH_URL", "https://app.shinuailabs.com/playwright/ttacart/"))
 
 

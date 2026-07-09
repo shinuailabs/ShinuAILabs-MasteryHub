@@ -17,7 +17,7 @@ Run:
   JENKINS_BUILD    default lastBuild  (or a number like 5)
   JENKINS_USER     Jenkins user (console log needs auth -> 403 without it)
   JENKINS_TOKEN    Jenkins API token
-  GITHUB_REPO      default ShinojDutta/AdvancePlaywrightFramework1x
+  GITHUB_REPO      default shinuailabs/AdvancePlaywrightFramework1x
   GITHUB_TOKEN     optional, raises the unauthenticated rate limit
   HEALTH_URL       default https://app.shinuailabs.com/playwright/ttacart/
 """
@@ -35,7 +35,7 @@ load_dotenv()
 JENKINS_URL = os.getenv("JENKINS_URL", "http://localhost:8080").rstrip("/")
 JENKINS_JOB = os.getenv("JENKINS_JOB", "AdvancePlaywrightFramework1x")
 JENKINS_BUILD = os.getenv("JENKINS_BUILD", "lastBuild")
-GITHUB_REPO = os.getenv("GITHUB_REPO", "ShinojDutta/AdvancePlaywrightFramework1x")
+GITHUB_REPO = os.getenv("GITHUB_REPO", "shinuailabs/AdvancePlaywrightFramework1x")
 HEALTH_URL = os.getenv("HEALTH_URL", "https://app.shinuailabs.com/playwright/ttacart/")
 
 _MAX_LOG = 4000  # keep the tail — Playwright failures land at the end

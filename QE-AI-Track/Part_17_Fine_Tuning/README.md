@@ -65,6 +65,6 @@ Everything runs offline once the models are pulled.
 ## Where to go next
 
 1. Read [Fine_TUNE_Instructions.md](Fine_TUNE_Instructions.md). It is the Qwen2.5-Coder + Ollama recipe end to end.
-2. Try the bot against the [Advance-Playwright-Framework](https://github.com/ShinojDutta/Advance-Playwright-Framework) repo first — it is small enough to index in seconds.
+2. Try the bot against the [Advance-Playwright-Framework](https://github.com/shinuailabs/Advance-Playwright-Framework) repo first — it is small enough to index in seconds.
 3. Then swap the data source: point `index_repo.py` at a folder of PDFs, or rewrite the indexer to fetch from Jira / Confluence.
 4. Once retrieval feels solid, look at LoRA via MLX-LM (Mac) or Unsloth (CUDA) for tone/style fine-tuning.

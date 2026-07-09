@@ -83,8 +83,8 @@ flowchart LR
 
 ```bash
 # 1. Source repos (cloned into gitignored dirs)
-git clone https://github.com/ShinojDutta/QE-AI-Track14xSeleniumAdvanceFrameworks data/selenium_repo
-git clone https://github.com/ShinojDutta/Advance-Playwright-Framework  data/playwright_repo
+git clone https://github.com/shinuailabs/QE-AI-Track14xSeleniumAdvanceFrameworks data/selenium_repo
+git clone https://github.com/shinuailabs/Advance-Playwright-Framework  data/playwright_repo
 
 # 2. Backend
 python -m venv .venv && source .venv/bin/activate
@@ -257,8 +257,8 @@ sudo mkdir -p /opt/qacopilot && sudo chown $USER /opt/qacopilot
 cd /opt/qacopilot
 git clone https://github.com/<you>/AITesterBlueprint2x .
 cd Part_09_Project_QACopilot
-git clone --depth 1 https://github.com/ShinojDutta/QE-AI-Track14xSeleniumAdvanceFrameworks data/selenium_repo
-git clone --depth 1 https://github.com/ShinojDutta/Advance-Playwright-Framework  data/playwright_repo
+git clone --depth 1 https://github.com/shinuailabs/QE-AI-Track14xSeleniumAdvanceFrameworks data/selenium_repo
+git clone --depth 1 https://github.com/shinuailabs/Advance-Playwright-Framework  data/playwright_repo
 
 python3.12 -m venv .venv && source .venv/bin/activate
 pip install -r backend/requirements.txt

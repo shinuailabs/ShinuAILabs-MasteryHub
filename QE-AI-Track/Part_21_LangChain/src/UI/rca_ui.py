@@ -49,7 +49,7 @@ with st.sidebar:
     st.subheader("GitHub")
     github_repo = st.text_input(
         "Repo (URL or owner/repo)",
-        value="https://github.com/ShinojDutta/AdvancePlaywrightFramework1x/commits/main/",
+        value="https://github.com/shinuailabs/AdvancePlaywrightFramework1x/commits/main/",
     )
     github_token = st.text_input("GitHub token (optional)", value="", type="password")
 

@@ -569,11 +569,11 @@ graph TD
   </tr>
   <tr>
     <td><strong>GitHub</strong></td>
-    <td><a href="https://github.com/ShinojDutta">Shinoj K Narayan</a></td>
+    <td><a href="https://github.com/shinuailabs">Shinoj K Narayan</a></td>
   </tr>
   <tr>
     <td><strong>Repository</strong></td>
-    <td><a href="https://github.com/ShinojDutta/AITesterBlueprint2x">AITesterBlueprint2x</a></td>
+    <td><a href="https://github.com/shinuailabs/AITesterBlueprint2x">AITesterBlueprint2x</a></td>
   </tr>
 </table>
 

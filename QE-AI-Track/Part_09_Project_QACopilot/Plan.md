@@ -7,8 +7,8 @@ Chapter 9 — QA Copilot: Multi-Source RAG Plan
   artifacts:                                                                     
                                                                                  
  1. Selenium TestNG Java framework (clone of                                     
- ShinojDutta/QE-AI-Track14xSeleniumAdvanceFrameworks)                                    
- 2. Playwright TS framework (clone of ShinojDutta/Advance-Playwright-Framework)  
+ shinuailabs/QE-AI-Track14xSeleniumAdvanceFrameworks)                                    
+ 2. Playwright TS framework (clone of shinuailabs/Advance-Playwright-Framework)  
  3. VWO test case corpus (data/csv/testcases_vwo_100.csv, schema: id, jira_id,   
  summary, module, priority, severity, labels, preconditions, steps,              
  expected_result, test_type, owner, sprint, status)                              
@@ -241,9 +241,9 @@ Chapter 9 — QA Copilot: Multi-Source RAG Plan
 
  cd Part_09_Project_QACopilot
  # 1. clone source repos into data/
- git clone https://github.com/ShinojDutta/QE-AI-Track14xSeleniumAdvanceFrameworks
+ git clone https://github.com/shinuailabs/QE-AI-Track14xSeleniumAdvanceFrameworks
  data/selenium_repo
- git clone https://github.com/ShinojDutta/Advance-Playwright-Framework
+ git clone https://github.com/shinuailabs/Advance-Playwright-Framework
  data/playwright_repo
 
  # 2. backend

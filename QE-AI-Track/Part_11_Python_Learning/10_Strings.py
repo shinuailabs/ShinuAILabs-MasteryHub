@@ -87,10 +87,10 @@ print("a\tb".expandtabs(4))              # 'a   b'
 # ============================================================
 # 7. Split / join
 # ============================================================
-csv = "shinoj,dutta,qa,india"
-print(csv.split(","))               # ['shinoj', 'dutta', 'qa', 'india']
-print(csv.split(",", 2))            # ['shinoj', 'dutta', 'qa,india']  maxsplit
-print(csv.rsplit(",", 1))           # ['shinoj,dutta,qa', 'india']     from right
+csv = "shinoj,narayan,qa,india"
+print(csv.split(","))               # ['shinoj', 'narayan', 'qa', 'india']
+print(csv.split(",", 2))            # ['shinoj', 'narayan', 'qa,india']  maxsplit
+print(csv.rsplit(",", 1))           # ['shinoj,narayan,qa', 'india']     from right
 
 multiline = "line1\nline2\nline3"
 print(multiline.splitlines())       # ['line1', 'line2', 'line3']

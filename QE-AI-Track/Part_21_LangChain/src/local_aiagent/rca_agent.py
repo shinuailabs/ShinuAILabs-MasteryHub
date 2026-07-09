@@ -22,7 +22,7 @@ def fetch_test_logs(test_name: str) -> str:
 
 @tool
 def recent_commits(area: str) -> str:
-    # https://github.com/ShinojDutta/AITesterBlueprint2x/commits/main/
+    # https://github.com/shinuailabs/AITesterBlueprint2x/commits/main/
     """Return recent commits that touched a given area/module."""
     return ("- a1b2c3 'switch payment gateway to v2 endpoint' (2h ago)\n"
             "- d4e5f6 'cut payment client timeout 3s -> 1s' (3h ago)")
