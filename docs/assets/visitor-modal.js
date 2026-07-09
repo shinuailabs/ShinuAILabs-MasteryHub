@@ -66,7 +66,7 @@
     const fields = [
       { id: 'mh-name', label: 'Full Name', type: 'text', required: true, placeholder: 'Enter your full name' },
       { id: 'mh-email', label: 'Email Address', type: 'email', required: true, placeholder: 'you@example.com' },
-      { id: 'mh-mobile', label: 'Mobile Number', type: 'tel', required: false, placeholder: '+91 98765 43210' },
+      { id: 'mh-mobile', label: 'Mobile Number', type: 'tel', required: true, placeholder: '+91 98765 43210' },
       { id: 'mh-company', label: 'Company (optional)', type: 'text', required: false, placeholder: 'Where do you work?' }
     ];
 
@@ -146,7 +146,7 @@
       const company = document.getElementById('mh-company').value.trim();
 
       // Validation
-      if (!name || !email) {
+      if (!name || !email || !mobile) {
         errorEl.textContent = 'Please fill in all required fields.';
         errorEl.style.display = 'block';
         return;
