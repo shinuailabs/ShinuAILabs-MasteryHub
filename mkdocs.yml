@@ -46,7 +46,7 @@ markdown_extensions:
 nav:
   - Home: index.md
   - QE-AI-Track - AI for QE:
-    - Overview: qe-ai-track/README.md
+    - Overview: qe-ai-track/index.md
     - LLM Basics: qe-ai-track/llm-basics.md
     - Prompt Engineering: qe-ai-track/prompt-engineering.md
     - Job Assistant AI: qe-ai-track/job-assistant-ai.md
@@ -66,7 +66,7 @@ nav:
     - Browser Pilot: qe-ai-track/browser-pilot.md
     - LangChain: qe-ai-track/langchain.md
   - Playwright-Pro-Track:
-    - Overview: playwright-pro-track/README.md
+    - Overview: playwright-pro-track/index.md
     - JavaScript: playwright-pro-track/javascript.md
     - TypeScript: playwright-pro-track/typescript.md
     - Playwright Fundamentals: playwright-pro-track/playwright-fundamentals.md

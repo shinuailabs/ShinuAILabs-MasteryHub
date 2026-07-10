@@ -4,7 +4,7 @@
 
 ---
 
-## 🧠 [QE-AI-Track](./qe-ai-track/README.md) — AI for Quality Engineers
+## 🧠 [QE-AI-Track](./qe-ai-track/) — AI for Quality Engineers
 
 21 progressive parts from LLM basics to building multi-agent QA pipelines.
 
@@ -29,11 +29,11 @@
 | 20 | Browser Pilot — AI-driven browser testing |
 | 21 | LangChain — Advanced LLM orchestration |
 
-**[Explore QE-AI-Track →](./qe-ai-track/README.md)**
+**[Explore QE-AI-Track →](./qe-ai-track/)**
 
 ---
 
-## 🌐 [Playwright-Pro-Track](./playwright-pro-track/README.md) — Playwright + AI Mastery
+## 🌐 [Playwright-Pro-Track](./playwright-pro-track/) — Playwright + AI Mastery
 
 15 progressive modules from zero JavaScript to AI-powered testing agents.
 
@@ -56,7 +56,7 @@
 | 15 | Interview & Career | 90 labs |
 | | **Total** | **1,447 labs** |
 
-**[Explore Playwright-Pro-Track →](./playwright-pro-track/README.md)**
+**[Explore Playwright-Pro-Track →](./playwright-pro-track/)**
 
 ---
 
